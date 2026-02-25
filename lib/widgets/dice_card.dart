@@ -1,47 +1,52 @@
-import 'package:dnd_dice_roller/models/die.dart';
-import 'package:dnd_dice_roller/screens/dice_roller.dart';
+import 'package:dnd_dice_roller/providers/basic_provider.dart';
+import 'package:dnd_dice_roller/screens/basic_modal_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DiceCard extends StatelessWidget {
+class DiceCard extends ConsumerWidget {
   const DiceCard({super.key, required this.diceNumber});
   final String diceNumber;
 
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          splashColor: Theme.of(context).hintColor,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DiceRoller(diceNumber: diceNumber,)),
-            );
-          },
-          child: Stack(
-            children: [
-              Image.asset('assets/images/d$diceNumber.png', width: 150),
-              Positioned(
-                top: 32,
-                bottom: 32,
-                left: 0,
-                right: 0,
-                child: Container(
-                  color: const Color.fromARGB(139, 0, 0, 0),
-                  padding: EdgeInsets.symmetric(vertical: 4),
-                  margin: EdgeInsets.symmetric(horizontal: 40),
-                  child: Center(
-                    child: Text(
-                      'D$diceNumber',
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodySmall!.copyWith(color: Colors.white),
-                    ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: Center(
+        child: Container(
+          width: 200,
+          height: 200,
+          //Dice Frame
+          /* decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/stone_round.png'),
+              fit: BoxFit.cover,
+            ),
+          ), */
+
+          //Dice Clickable Pictures
+          child: InkWell(
+            borderRadius: BorderRadius.circular(16),
+            splashColor: Theme.of(context).hintColor,
+            onTap: () {
+              ref.read(diceProvider.notifier).getFaces(int.parse(diceNumber));
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (context) => BasicModalSheet(),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/d${diceNumber}_blu.png',
                   ),
+                  alignment: AlignmentGeometry.bottomRight,
+                  fit: BoxFit.contain,
+                 ),
                 ),
               ),
-            ],
           ),
         ),
       ),
