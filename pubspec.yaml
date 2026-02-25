@@ -31,15 +31,26 @@ dependencies:
   flutter:
     sdk: flutter
   audioplayers: ^6.1.0
+  lottie: ^3.3.2
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  flutter_riverpod: ^3.2.0
+  animated_background: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/d20_blu.png"
+  min_sdk_android: 21
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -61,13 +72,29 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/d4.png
-    - assets/images/d6.png
-    - assets/images/d8.png
-    - assets/images/d10.png
-    - assets/images/d12.png
-    - assets/images/d20.png
+    - assets/images/d4_blu.png
+    - assets/images/d6_blu.png
+    - assets/images/d8_blu.png
+    - assets/images/d10_blu.png
+    - assets/images/d12_blu.png
+    - assets/images/d20_blu.png
+    - assets/images/pergamena.png
+    - assets/images/dice_roller.png
+    - assets/images/custom_roll.png
+    - assets/images/custom_dice.png
+    - assets/images/tavola.png
+    - assets/images/bg_pietra.png
+    - assets/images/modal_bg.png
+    - assets/images/reset_button.png
+    - assets/images/insegna.png
+    - assets/images/plus.png
+    - assets/images/meno.png
+    - assets/images/add_dice.png
+    - assets/images/roll_dice.png
+    - assets/images/test.png
+    - assets/images/sparkle.png
     - assets/sounds/dice_roll.mp3
+    - assets/animations/rolling_dice.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -80,8 +107,35 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
+  fonts:
+    - family: MedievalSharp
+      fonts:
+        - asset: assets/fonts/MedievalSharp-Regular.ttf
+
+    - family: Cinzel
+      fonts:
+        - asset: assets/fonts/Cinzel-VariableFont_wght.ttf
+        - asset: assets/fonts/Cinzel-Bold.ttf
+        - asset: assets/fonts/CinzelDecorative-Black.ttf
+        - asset: assets/fonts/CinzelDecorative-Bold.ttf
+        - asset: assets/fonts/CinzelDecorative-Regular.ttf
+          weight: 700
+
+    - family: Almendra
+      fonts:
+        - asset: assets/fonts/Almendra-Regular.ttf
+        - asset: assets/fonts/Almendra-Bold.ttf
+          weight: 700
+    - family: Modesto-Condensed
+      fonts:
+        - asset: assets/fonts/Modesto-Condensed.otf
+    - family: Modesto-Text-Light 
+      fonts:
+        - asset: assets/fonts/Modesto-Text-Light.otf
+    - family: Modesto-Poster-Regular
+      fonts:
+        - asset: assets/fonts/Modesto-Poster-Regular.otf
+
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
